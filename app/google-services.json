@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "531905699633",
+    "firebase_url": "https://music-bangla-184308.firebaseio.com",
+    "project_id": "music-bangla-184308",
+    "storage_bucket": "music-bangla-184308.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531905699633:android:17fbf690c24edaa3",
+        "android_client_info": {
+          "package_name": "com.saim.samchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531905699633-hgjf8p4juj5cjd9kv29vh2csau1b4aqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqpt7SIZmos6dB4APPl9SKDvE3ygnqE8c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531905699633:android:0248fc4497f4fdd9",
+        "android_client_info": {
+          "package_name": "saim.com.sammessenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531905699633-os00lr0fnql0fve8llk2elh2jn3fic24.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "saim.com.sammessenger",
+            "certificate_hash": "3bdcbda5d167acfb4a323197589dcad202867f8c"
+          }
+        },
+        {
+          "client_id": "531905699633-hgjf8p4juj5cjd9kv29vh2csau1b4aqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqpt7SIZmos6dB4APPl9SKDvE3ygnqE8c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531905699633-hgjf8p4juj5cjd9kv29vh2csau1b4aqk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
