@@ -15,10 +15,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import saim.com.sammessenger.Model.ModelUser;
+import saim.com.sammessenger.Utility.DatabaseTable;
 
 public class Signup extends AppCompatActivity {
 
     FirebaseAuth auth;
+    DatabaseReference mDatabase;
 
     EditText email_reg, password_reg;
     Button btnSignup_reg, btnPassword_reg, btnSignin_reg;
@@ -34,6 +40,7 @@ public class Signup extends AppCompatActivity {
 
     public void init(){
         auth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child(DatabaseTable.userTable);
 
         email_reg = (EditText) findViewById(R.id.email_reg);
         password_reg = (EditText) findViewById(R.id.password_reg);
@@ -52,7 +59,7 @@ public class Signup extends AppCompatActivity {
         btnSignup_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = email_reg.getText().toString().trim();
+                final String email = email_reg.getText().toString().trim();
                 String password = password_reg.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
@@ -76,16 +83,27 @@ public class Signup extends AppCompatActivity {
                         .addOnCompleteListener(Signup.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(Signup.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-                                progressBar_reg.setVisibility(View.GONE);
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(Signup.this, "Authentication failed." + task.getException(),Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(Signup.this, MainActivity.class));
-                                    finish();
+
+                                    String userID = auth.getCurrentUser().getUid();
+                                    ModelUser modelUser = new ModelUser("streloy", "Md. Mobinur Rahman Saim", "I am Developer.", email, "+8801711415554", "Male", "Default", "Default");
+                                    mDatabase.child(userID).setValue(modelUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()){
+                                                progressBar_reg.setVisibility(View.GONE);
+                                                startActivity(new Intent(Signup.this, MainActivity.class));
+                                                finish();
+                                            } else {
+                                                Toast.makeText(Signup.this, "Authentication failed." + task.getException(),Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
+
+
                                 }
                             }
                         });
